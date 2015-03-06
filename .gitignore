@@ -5,5 +5,6 @@ node_modules/*
 platforms/*
 
 .DS_Store
+.idea/
 
 *.suo
