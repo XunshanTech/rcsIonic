@@ -1,0 +1,15 @@
+material-dialog.width-md(id="dialog-checkFlavorRequirement")
+  .dialog-content.height-md
+    h3 是否有忌口?
+    ion-content
+      material-checkbox(
+        ng-repeat="requirement in requirementSelections"
+        ng-model="requirement.selected" aria-label="{{requirement.name}}")
+        | {{requirement.name}}
+
+  .dialog-actions
+    .text-center
+      material-button.material-button-raised.material-theme-light(
+        ng-click="clickDone()") 确认
+      material-button.material-button-colored(
+        ng-click="clickCancel()") 取消

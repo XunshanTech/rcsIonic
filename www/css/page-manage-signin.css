@@ -1,0 +1,30 @@
+#signin .title h2 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+#signin .title h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#signin .rcs-pane {
+  width: 40%;
+  height: 350px;
+}
+
+#signin .rcs-pane.info .action material-button.material-theme-light {
+  width: 55%;
+}
+
+#signin .rcs-pane.info .action material-button {
+  width: 35%;
+}
+
+#signin .action div {
+  margin-top: 30px;
+}
+
+#signin .action h4 {
+  font-size: 16px;
+}

@@ -1,0 +1,17 @@
+div(id="about" layout="vertical" layout-fill)
+  br
+
+  div(layout="horizontal" layout-align="center" ng-switch="table.Status")
+
+    .text-center(ng-switch-when="empty")
+      h2 您好, 欢迎光临<b>{{restaurantName}}</b>!
+      h2 祝您用餐愉快!
+      material-button.material-button-raised.material-theme-light(ng-click="clickStartOrder()") 开始点菜
+
+    .text-center(ng-switch-when="paying")
+      h2 请等待餐厅服务员将协助您完成支付...
+      i.fa.fa-3x.fa-spinner.fa-spin
+
+    .text-center(ng-switch-when="paid")
+      h2 感谢您的惠顾 ，欢迎再次光临！
+      h2 再见！

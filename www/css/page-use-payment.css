@@ -1,0 +1,62 @@
+#payment .pane-area {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+#payment .rcs-pane.ordered {
+  width: 55%;
+}
+
+#payment .rcs-pane.pay {
+  width: 30%;
+  margin-left: 25px;
+}
+
+/*header*/
+#payment .pane-header .left {
+  float: left;
+}
+
+#payment .pane-header .right {
+  float: right;
+  width: 30%;
+}
+
+/*ordered*/
+#payment .rcs-pane.ordered .material-tile-right {
+  width: 30%;
+}
+
+#payment .rcs-pane.ordered .material-tile-right span.left  {
+  width: 50%;
+}
+
+#payment .rcs-pane.ordered .material-left {
+  margin-right: 20px;
+}
+
+/*pay*/
+#payment .rcs-pane.pay material-checkbox {
+  height: 18%;
+  padding-top: 10%;
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
+
+#payment material-checkbox .material-container,
+#payment material-checkbox .material-icon,
+#payment material-checkbox.material-checked .material-icon {
+  height: 32px;
+  width: 32px;
+}
+
+#payment material-checkbox.material-checked .material-icon:after {
+  height: 24px;
+  width: 12px;
+  left: 8px;
+}
+
+#payment material-checkbox .material-label {
+  font-size: 25px;
+  margin-bottom: 10px;
+}

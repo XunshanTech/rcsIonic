@@ -1,0 +1,60 @@
+div(id="payment" layout="vertical" layout-fill)
+  h2.text-center.title(ng-show="ordered == null") 准备结帐
+
+  .text-center(ng-show="ordered == null")
+    i.fa.fa-spin.fa-refresh.fa-4x
+    p 同步数据...
+
+  h3.text-center(ng-show="ordered != null && ordered.length == 0")
+    p 您没有点选任何菜品，请返回点菜
+
+  .pane-area(ng-show="ordered != null && ordered.length != 0" layout="horizontal" layout-align="center")
+    .rcs-pane.ordered.material-whiteframe-z3(layout="vertical")
+
+      .pane-header.full-width
+        .left
+          span.colored [{{ordered.length}}]
+          span 已点菜品
+        .right
+          span 总价&nbsp;
+          span.colored(ng-show="isPremium == false") {{grandTotal}}&nbsp;
+          span.colored(ng-show="isPremium == true") {{grandTotalPremium}}&nbsp;
+          span 元
+
+      ion-content
+        material-list
+          material-item(ng-repeat="item in orderedGroup | orderBy:['type'] track by $index")
+            .material-left {{item.type}}
+            .material-tile-content
+              h2 <b>{{item.name}}</b>
+                span(ng-show="item.flavor") &nbsp;({{item.flavor}})
+            .material-tile-right(layout="horizontal" layout-align="start")
+              span.left(ng-show="isPremium == false") {{item.price}}元
+              span.left(ng-show="isPremium == true") {{item.premiumPrice}}元
+              span x{{item.count}}
+
+    .rcs-pane.pay.material-whiteframe-z3(layout="vertical")
+      .pane-header
+        span 支付
+
+      .text-center
+        material-checkbox(ng-show="isPremium == true" ng-model="isPremium" disabled aria-label="我是会员" noink) 我是会员
+
+        material-button.material-button-raised(ng-click="clickIsPremium($event)"
+          ng-show="isPremium == false")
+          h2
+            div
+              b.fa.fa-user
+            span 我是会员
+        material-button.material-button-raised(ng-click="clickPay('cash', $event)"
+          ng-disabled="justClicked['cash'] == true")
+          h2
+            div
+              b.fa.fa-cny
+            span 现金支付
+        material-button.material-button-raised(ng-click="clickPay('card', $event)"
+          ng-disabled="justClicked['card'] == true")
+          h2
+            div
+              b.fa.fa-credit-card
+            span 刷卡支付

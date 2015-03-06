@@ -1,0 +1,57 @@
+div(id="eating" layout="vertical" layout-fill)
+
+  .pane-area(layout="horizontal" layout-align="center")
+
+    .rcs-pane.ordered.material-whiteframe-z3(layout="vertical")
+
+      .pane-header
+        div(ng-click="clickRefresh()")
+          span.colored [{{ordered.length}}]
+          span 已下单菜品
+          span.fa.fa-refresh(ng-class="{'fa-spin':refreshing == true}" ng-hide="pending == true")
+
+      .text-center(ng-show="pending == true")
+        br
+        h2 请等待餐厅完成点菜下单...
+        i.fa.fa-3x.fa-spinner.fa-spin
+
+      ion-content
+        material-list
+          material-item(ng-repeat="item in orderedGroup | orderBy:['type'] track by $index")
+            .material-left {{item.type}}
+            .material-tile-content
+              h2 <b>{{item.name}}</b>
+                span(ng-show="item.flavor") &nbsp;({{item.flavor}})
+            .material-tile-right x{{item.count}}
+
+    .rcs-pane.call.material-whiteframe-z3(layout="vertical")
+      .pane-header
+        span 服务
+
+      .text-center
+        material-button.material-button-raised(ng-click="clickRequest('water', $event)"
+          ng-disabled="justClicked['water'] == true || getRequestCd('water') != 0")
+          h2
+            div
+              b.fa.fa-coffee
+            span(ng-show="getRequestCd('water') == 0") 呼叫加水
+            span(ng-show="getRequestCd('water') != 0") (剩余{{getRequestCd('water')}}秒)
+        material-button.material-button-raised(ng-click="clickRequest('call', $event)"
+          ng-disabled="justClicked['call'] == true || getRequestCd('call') != 0")
+          h2
+            div
+              b.fa.fa-user
+            span(ng-show="getRequestCd('call') == 0") 叫服务员
+            span(ng-show="getRequestCd('call') != 0") (剩余{{getRequestCd('call')}}秒)
+        material-button.material-button-raised(ng-click="clickGoToOrder()"
+          ng-disabled="ifDisableClickOrder() == true")
+          h2
+            div
+              b.fa.fa-cutlery
+            span 添加菜品
+        material-button.material-button-raised(ng-click="clickPay()"
+          ng-disabled="ifDisableClickPay() == true")
+          h2
+            div
+              b.fa.fa-cny
+            span 自助结帐

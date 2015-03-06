@@ -1,0 +1,129 @@
+.page .material-toolbar-tools material-button {
+  font-size: 20px;
+  height: 64px;
+  line-height: 54px;
+  margin: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.page material-content.background,
+.page ion-content.background {
+  background-color: #f8f4ee;
+}
+
+.page material-toolbar.material-theme-light,
+.page ion-header-bar.bar-light {
+  background-color: #E5E0D8 !important;
+  color: #606060 !important;
+}
+
+.page material-toolbar.material-theme-dark,
+.page ion-header-bar.bar-dark {
+  background-color: #D3CFCA !important;
+  color: #606060 !important;
+}
+
+.page material-toolbar h1 {
+  color: #606060;
+}
+
+.page .bar.bar-dark .title {
+  color: #606060 !important;
+}
+
+.page material-toolbar.material-theme-dark {
+  /*padding-right: 5px;*/
+}
+
+.page material-toolbar .fa {
+  font-size: 22px;
+  text-align: center;
+  width: 30px;
+}
+
+.page .material-toolbar-tools {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.page .pane-area {
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.page .rcs-pane {
+  background-color: #ffffff;
+  display: inherit;
+  font-size: 18px;
+  height: 82%;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.page .rcs-pane .action {
+  width: 100%;
+}
+
+.page .rcs-pane .action material-button {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  height: 60px;
+  line-height: 48px;
+  width: 80%;
+}
+
+.page .pane-header {
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #8A1717;
+  padding-top: 5px;
+  height: 32px;
+  min-height: 32px;
+  z-index: 10;
+}
+
+.page .pane-header .fa {
+  width: 19px;
+  height: 19px;
+  margin-left: 10px;
+}
+
+.page .pane-header .colored {
+  color: #8A1717;
+}
+
+.page .material-toolbar-tools .return {
+  background-color: #f8f4ee;
+  height: 64px;
+  line-height: 64px;
+  margin-left: 0px;
+  width: 64px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.page .material-toolbar-tools .return .fa {
+  /*color: #f1f1f1;*/
+  font-size: 28px;
+}
+
+#page-use .material-toolbar-tools .eating {
+  font-size: 20px;
+  height: 64px;
+  line-height: 64px;
+  padding-right: 10px;
+}
+
+#page-use b.colored {
+  color: #8A1717;
+}

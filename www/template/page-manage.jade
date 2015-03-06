@@ -1,0 +1,18 @@
+.page(id="page-manage" flex layout="vertical" layout-fill)
+  material-toolbar.material-theme-dark
+    .material-toolbar-tools(layout="horizontal")
+      material-button.return(ng-show="ifShowReturn() == true" ng-click="clickReturn()")
+        i.fa.fa-reply
+      h1
+        i.fa.fa-gear
+        | 配置
+      div(flex)
+      material-button.hover(ng-if="getCurrentRestaurant()")
+        i.fa.fa-cutlery
+        b {{getCurrentRestaurant()}}
+      material-button.hover(ng-if="getCurrentUser()" ng-click="clickUser()")
+        i.fa.fa-user
+        b {{getCurrentUser()}}
+  material-content.background(layout="vertical" layout-fill scroll-y)
+    //- nested ui-view is not working well in jade
+    <div ui-view layout="vertical" layout-fill></div>

@@ -1,0 +1,117 @@
+#rcs material-dialog {
+  font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+}
+
+#rcs .dialog-content {
+  padding-bottom: 0px;
+}
+
+#rcs material-dialog ion-content {
+  display: flex;
+  min-height: 200px;
+}
+
+#rcs .dialog-actions > .text-center {
+  width: 100%;
+}
+
+#rcs .dialog-actions material-button {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+  height: 60px;
+  line-height: 48px;
+  width: 80%;
+}
+
+#dialog-payCash h3,
+#dialog-isPremium h3 {
+  margin-bottom: 10px;
+}
+
+#dialog-payCash .input {
+  float: left;
+  width: 250px;
+  height: 280px;
+}
+
+#dialog-payCash material-list {
+  float: right;
+  margin-top: 30px;
+  width: 180px;
+}
+
+#dialog-payCash .material-tile-content {
+  min-height: 55px;
+  margin-left: 5px;
+}
+
+#dialog-payCash .material-tile-content .colored {
+  color: #8A1717;
+}
+
+#dialog-payCash .dialog-actions material-button,
+#dialog-chooseFlavor .dialog-actions material-button,
+#dialog-checkFlavorRequirement .dialog-actions material-button {
+  width: 40%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+#dialog-isPremium .dialog-content {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#dialog-isPremium h3 div {
+  border-bottom: 2px solid transparent;
+}
+
+#dialog-isPremium .phone {
+  border-bottom: 2px solid #8A1717;
+}
+
+#dialog-chooseFlavor .dialog-content,
+#dialog-checkFlavorRequirement .dialog-content {
+  overflow: hidden;
+  min-width: 300px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+#dialog-chooseFlavor h3,
+#dialog-checkFlavorRequirement h3 {
+  margin-bottom: 2px;
+}
+
+#dialog-chooseFlavor material-radio-button {
+  margin: 0px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  height: 40px;
+  font-size: 22px;
+}
+
+#dialog-chooseFlavor .dialog-actions,
+#dialog-checkFlavorRequirement .dialog-actions {
+  margin-top: 10px;
+}
+
+#dialog-checkFlavorRequirement material-checkbox .material-container,
+#dialog-checkFlavorRequirement material-checkbox .material-icon,
+#dialog-checkFlavorRequirement material-checkbox.material-checked .material-icon {
+  height: 24px;
+  width: 24px;
+}
+
+#dialog-checkFlavorRequirement material-checkbox.material-checked .material-icon:after {
+  height: 16px;
+  width: 9px;
+  left: 6px;
+}
+
+#dialog-checkFlavorRequirement material-checkbox .material-label {
+  font-size: 22px;
+  margin-bottom: 5px;
+}

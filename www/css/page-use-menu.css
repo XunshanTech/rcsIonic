@@ -1,0 +1,203 @@
+#menu .rcs-pane.list {
+  /*width: 65%;*/
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#menu .rcs-pane.info {
+  width: 300px;
+  padding-top: 5px;
+  margin-left: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*tab*/
+#menu material-tabs {
+  border-bottom: 1px solid #8A1717;
+  z-index: 10;
+}
+
+#menu material-tabs .material-ink-ripple {
+  color: #fff;
+}
+
+#menu material-tab {
+  background-color: #fff;
+}
+
+#menu .tabs-header {
+  background-color: #8A1717;
+}
+
+#menu .tabs-header-items {
+  height: 54px;
+}
+
+#menu material-tab-label {
+  font-weight: bold;
+  color: #818181;
+  font-size: 20px;
+  text-transform: none;
+}
+
+#menu material-tab-label.active {
+  color: #8A1717;
+}
+
+#menu material-ink-bar {
+  height: 5px;
+  background: #8A1717;
+  position: absolute;
+  margin-top: -5px;
+}
+
+#menu .header material-button .fa.fa-star {
+  color: #8A1717;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 40px;
+  margin-bottom: 8px;
+}
+
+#menu .header > .fa,
+#menu .header material-button .fa.fa-star-o {
+  color: #818181;
+  font-size: 24px;
+  margin-right: 8px;
+  margin-left: 8px;
+  line-height: 48px;
+}
+
+#menu .header material-button.types {
+  font-size: 20px;
+  color: #818181;
+  font-weight: bold;
+}
+
+#menu .header material-button.types span {
+  vertical-align: -webkit-baseline-middle;
+}
+
+/*content*/
+#menu .rcs-pane > .content-container {
+  height: 100%;
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#menu .rcs-pane.list > .content-container {
+  border-top: 2px solid #8A1717;
+  z-index: 20;
+}
+
+#menu .rcs-pane.list > .content-container > ion-content {
+  margin-top: 5px;
+}
+
+#menu .rcs-pane.list material-content,
+#menu .rcs-pane ion-content {
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+#menu .rcs-pane.list material-content {
+  display: table;
+}
+
+/*footer*/
+#menu .page-footer {
+  min-height: 50px;
+  max-height: 50px;
+  margin-bottom: 10px;
+  margin-top:15px;
+  line-height: 40px;
+  font-size: 22px;
+  position: relative;
+}
+
+#menu .page-footer material-button {
+  margin-left: 8px;
+  margin-right: 8px;
+  width: 120px;
+}
+
+/*menu*/
+#menu .menu-row {
+  margin-top: 20px;
+  margin-left: 3%;
+  width: 100%;
+}
+
+#menu .menu-col {
+  height: 80px;
+  width: 45%;
+}
+
+#menu .menu-col.right {
+  position: absolute;
+  right: 0;
+  margin-right: 3%;
+}
+
+/*info*/
+#menu .pane-header {
+  height: 55px;
+  min-height: 55px;
+}
+
+#menu .pane-header .left {
+  float: left;
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
+
+#menu .pane-header .right {
+  float: right;
+  width: 80px
+}
+
+#menu .pane-header material-button {
+  width: 100%;
+  line-height: 35px;
+}
+
+#menu .pane-header material-button .fa {
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+#menu .material-tile-content {
+  font-size: 18px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+#menu .material-tile-content h2 {
+  color: #8A1717;
+}
+
+#menu .material-tile-content .type {
+  width: 60px;
+}
+
+#menu .material-tile-left,
+#menu .material-tile-right {
+  max-width: 40px;
+  min-width: 40px;
+  width: 40px;
+}
+
+#menu .material-tile-left material-button,
+#menu .material-tile-right material-button {
+  height: 45px;
+  width: 40px;
+  line-height: 35px;
+  font-size: 20px;
+}
+
+#menu .material-tile-left material-button,
+#menu .material-tile-right material-button {
+  /*margin-right: 5px;*/
+}

@@ -1,0 +1,11 @@
+.rcs-number-input(layout="vertical" layout-align="center")
+  .numberRow(layout="horizontal" layout-align="center" ng-repeat="numberRow in numberRows")
+    material-button.material-button-fab(ng-repeat="number in numberRow" ng-click="clickNumber(number)")
+      b {{number}}
+  .numberRow(layout="horizontal" layout-align="center")
+    material-button.material-button-fab.action(ng-click="clickClear()")
+      i.fa.fa-remove
+    material-button.material-button-fab(ng-click="clickNumber(0)")
+      b 0
+    material-button.material-button-fab.action(ng-click="clickBackspace()")
+      i.fa.fa-arrow-left

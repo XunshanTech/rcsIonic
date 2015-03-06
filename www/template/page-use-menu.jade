@@ -1,0 +1,99 @@
+div(id="menu" layout="vertical" layout-fill)
+
+  h2.text-center.title(ng-show="menuItems == null") 点餐
+
+  .text-center(ng-show="menuItems == null")
+    i.fa.fa-spin.fa-refresh.fa-4x
+    p 同步数据...
+
+  h3.text-center(ng-show="menuItems != null && menuItems.length == 0")
+    p 餐厅尚未配置菜单，请前往管理员页面操作
+    i.fa.fa-refresh.fa-4x(ng-click="clickRefreshMenu()" ng-class="{'fa-spin':refreshing == true}")
+
+  .pane-area(ng-show="menuItems != null && menuItems.length != 0" layout="horizontal" layout-align="center")
+
+    .rcs-pane.list.material-whiteframe-z3(flex layout="vertical")
+
+      .header(layout="horizontal")
+        material-tabs(selected="selectedIndex")
+          material-tab(
+            ng-repeat="menuType in menuTypes track by $index"
+            ng-class="{active:selectedIndex=={{$index}}}"
+            on-select="onTabSelected($index)"
+            disabled="false")
+            material-tab-label
+              span(ng-show="menuType == star")
+                i.fa.fa-star
+                b 推荐
+              b(ng-show="menuType != star") {{menuType}}
+                span(ng-if="selectedIndex==$index && maxPage > 1")
+                  //- span ({{currentPage}}/{{maxPage}})
+
+      .content-container
+        //- material-content
+          .menu-row(ng-repeat="menuItemsRow in menuItemsRows track by $index" layout="horizontal" layout-align="start")
+        ion-content
+          .menu-row(ng-repeat="menuItemsRow in menuItemsRowsAll track by $index" layout="horizontal" layout-align="start")
+            .menu-col(ng-repeat="menuItem in menuItemsRow track by $index" ng-class="{right:{{$index}} % 2 == 1}")
+              rcs-menu-item
+
+      //- .page-footer.text-center
+        material-button.material-button-raised.material-theme-light(
+          ng-disabled="currentPage <= 1" ng-click="clickPagePrevious()")
+          i.fa.fa-chevron-left
+        material-button.material-button-raised.material-theme-light(
+          ng-disabled="currentPage >= maxPage" ng-click="clickPageNext()")
+          i.fa.fa-chevron-right
+
+    .rcs-pane.info.material-whiteframe-z3(layout="vertical")
+      .pane-header
+        .left
+          span.colored [{{ordering.length}}]
+          span 准备下单
+          span(ng-if="maxOrderPage > 1")
+            //- span ({{currentOrderPage}}/{{maxOrderPage}})
+        .right
+          material-button.material-button-raised.material-theme-light(
+            ng-disabled="justClickedConfirm == true"
+            ng-click="clickConfirm($event)"
+            ng-show="orderingGroup && orderingGroup.length != 0")
+            span(ng-show="justClickedConfirm == false") 确认
+            span(ng-show="justClickedConfirm == true")
+              i.fa.fa-spin.fa-spinner
+
+      .content-container
+        //- material-content
+          material-list
+            material-item(ng-repeat="ordering in orderingGroup | orderBy:['type'] track by $index")
+        ion-content
+          material-list
+            material-item(ng-repeat="ordering in orderingGroupAll | orderBy:['type'] track by $index")
+              .material-tile-left
+                //- material-button.material-button-raised(ng-click="clickOrderingMinus(ordering)")
+                  i.fa.fa-minus
+                material-button.material-button-raised.material-theme-light(
+                  ng-disabled="justClickedConfirm == true"
+                  ng-click="clickOrderingPlus(ordering)")
+                  i.fa.fa-plus
+              .material-tile-content
+                h2 {{ordering.name}}
+                  span(ng-show="ordering.flavor") &nbsp;({{ordering.flavor}})
+                div(layout="horizontal")
+                  span.type {{ordering.type}}
+                  b x{{ordering.count}}
+              .material-tile-right
+                material-button.material-button-raised(
+                  ng-disabled="justClickedConfirm == true"
+                  ng-click="clickOrderingMinus(ordering)")
+                  i.fa.fa-minus
+                //- material-button.material-button-raised.material-theme-light(ng-click="clickOrderingPlus(ordering)")
+                  i.fa.fa-plus
+
+      //- .page-footer.text-center
+        //- (ng-show="maxOrderPage > 1")
+        material-button.material-button-raised.material-theme-light(
+          ng-disabled="currentOrderPage <= 1" ng-click="clickOrderPagePrevious()")
+          i.fa.fa-chevron-left
+        material-button.material-button-raised.material-theme-light(
+          ng-disabled="currentOrderPage >= maxOrderPage" ng-click="clickOrderPageNext()")
+          i.fa.fa-chevron-right

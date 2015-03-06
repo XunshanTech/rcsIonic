@@ -1,0 +1,20 @@
+#restaurant h2.title {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+#restaurant .rcs-pane {
+  width: 45%;
+  height: 400px;
+}
+
+#restaurant material-item:hover .material-tile-content,
+#restaurant .material-tile-content.selected {
+  color: #8a1717;
+}
+
+#restaurant material-item:hover .material-tile-content > h2,
+#restaurant .material-tile-content.selected > h2 {
+  font-weight: bold;
+  color: inherit;
+}

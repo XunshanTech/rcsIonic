@@ -1,0 +1,24 @@
+material-dialog.width-md(id="dialog-chooseFlavor")
+  .dialog-content.height-md
+    h3 {{name}}: 选择特调
+    ion-content
+      material-radio-group(ng-model="selectedFlavor")
+        material-radio-button(
+          ng-class="{'material-checked':flavorId==0}"
+          ng-click="clickFlavor(0)"
+          value="0"
+          aria-label="正常")
+          h4 正常
+        material-radio-button(
+          ng-repeat="flavor in flavorList"
+          ng-click="clickFlavor($index + 1)"
+          value="{{$index + 1}}"
+          aria-label="{{flavor}}")
+          h4 {{flavor}}
+
+  .dialog-actions
+    .text-center
+      material-button.material-button-raised.material-theme-light(
+        ng-click="clickChoose()") 确认
+      material-button.material-button-colored(
+        ng-click="clickCancel()") 取消

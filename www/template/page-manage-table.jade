@@ -1,0 +1,58 @@
+div(id="table" layout="vertical" layout-fill)
+  h2.text-center.title(ng-show="tables == null") 选择餐桌
+
+  .text-center(ng-show="tables == null")
+    i.fa.fa-spin.fa-refresh.fa-4x
+    p 同步数据...
+
+  h3.text-center(ng-show="tables != null && tables.length == 0")
+    p 餐厅尚未添加餐桌，请前往管理员页面操作
+    i.fa.fa-refresh.fa-4x(ng-click="clickRefreshTable()" ng-class="{'fa-spin':refreshing == true}")
+
+  .pane-area(ng-show="tables != null && tables.length != 0" layout="horizontal" layout-align="center")
+
+    .rcs-pane.list.material-whiteframe-z3(layout="vertical")
+      .pane-header(ng-click="clickRefreshTable()") 选择餐桌进行关联
+        i.fa.fa-refresh(ng-class="{'fa-spin':refreshing == true}")
+      ion-content
+        material-radio-group(ng-model="selectedIndexUi")
+          material-list(ng-repeat="table in tables | filter:ifNotLinked")
+            material-item(ng-click="clickTable($index, table)")
+              .material-tile-left
+                material-radio-button(ng-class="{'material-checked':selectedIndex=={{$index}}}" value="{{$index}}" noink)
+              .material-tile-content(ng-class="{'selected':selectedIndex==$index}")
+                h2 {{table.TableName}} ({{table.TableType}})
+
+    .rcs-pane.info.material-whiteframe-z3(layout="vertical")
+      .pane-header 关联信息
+      material-list
+        material-item
+          .material-tile-left
+            | 设备型号
+          .material-tile-content
+            h2(ng-show="deviceModel != null") {{deviceModel}}
+            h2.error(ng-show="deviceModel == null") 无法获取设备
+        material-item
+          .material-tile-left
+            | 系统版本
+          .material-tile-content
+            h2(ng-show="deviceSystemVersion != null") {{deviceSystemVersion}}
+            h2.error(ng-show="deviceSystemVersion == null") 无法获取设备
+        material-item
+          .material-tile-left
+            | 设备ID
+          .material-tile-content
+            h2(ng-show="deviceId != null") {{deviceId}}
+            h2.error(ng-show="deviceId == null") 无法获取设备
+        material-item.devider(ng-show="selectedIndex != -1")
+          .material-tile-left
+            | 选择餐桌
+          .material-tile-content
+            h2 {{selectedTable.TableName}} ({{selectedTable.TableType}})
+      .action.text-center
+        material-button.material-button-raised.material-theme-light(
+          ng-disabled="ifDisableCickLink() == true" ng-hide="linking == true"
+          ng-click="clickLink($event)") 关联
+        .text-center(ng-show="linking == true")
+          i.fa.fa-2x(ng-class="{'fa-spinner fa-spin':linking == true}")
+          h4 正在关联

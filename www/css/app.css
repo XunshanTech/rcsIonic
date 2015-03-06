@@ -1,0 +1,102 @@
+html {
+  overflow: hidden;
+}
+
+body *
+{
+   font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+
+#rcs .text-center {
+  text-align: center;
+}
+
+#rcs .full-width {
+  width: 100%;
+}
+
+#rcs .text-unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#rcs a {
+  color: #606060;
+}
+
+#rcs a:hover {
+  color: #8A1717;
+  font-weight: bold;
+}
+
+#rcs .material-tile-content {
+  margin-right: 0px;
+}
+
+#rcs .material-input-group-theme-light.material-input-has-value label,
+#rcs .material-input-group-theme-light.material-input-focused label {
+  color: #606060;
+}
+
+#rcs .material-input-group-theme-light.material-input-has-value input,
+#rcs .material-input-group-theme-light.material-input-focused input {
+  border-color: #606060;
+}
+
+#rcs material-button {
+  text-transform: none;
+}
+
+#rcs material-button.hover:hover {
+  color: #8a1717;
+  font-weight: bold;
+}
+
+#rcs material-button.material-theme-light {
+  background-color: #8A1717 !important;
+}
+
+#rcs material-button[disabled] {
+  background-color: #eaeaea !important;
+  cursor: not-allowed;
+}
+
+#rcs material-button.material-button-colored {
+  color: #8A1717 !important;
+}
+
+#rcs material-radio-button .material-on {
+  background-color: #8A1717;
+}
+
+#rcs canvas.material-ink-ripple {
+  color: #606060;
+}
+
+#rcs material-button.material-theme-light canvas.material-ink-ripple {
+  color: #f1f1f1;
+}
+
+#rcs material-radio-group:focus {
+  border-color: transparent;
+}
+
+#rcs material-button .material-button-inner[disabled] {
+  z-index: -1;
+}
+
+#rcs ion-content {
+  position: relative;
+  /*leave space for scroll bar*/
+  margin-right: -10px;
+  padding-right: 10px;
+}
+
+#rcs material-checkbox.material-checked .material-icon {
+  border-color: #8A1717;
+  background-color: #8A1717;
+}

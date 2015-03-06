@@ -1,0 +1,31 @@
+material-dialog.width-md(id="dialog-payCash")
+  .dialog-content
+    h3.text-center 您需要找零吗？如需要，请输入准备支付金额
+    .text-center.full-width
+
+      .input
+        rcs-number-input(ng-model="willPay")
+
+      material-list
+        material-item
+          .material-tile-left
+            b(ng-show="willPay") 支付
+          .material-tile-content
+            b.colored(ng-show="willPay") {{willPay}}元
+        material-item
+          .material-tile-left
+            b 消费
+          .material-tile-content
+            span {{shouldPay}}元
+        material-item
+          .material-tile-left
+            b 找零
+          .material-tile-content
+            span(ng-show="ifValidPay()") {{willPay - shouldPay}}元
+
+  .dialog-actions
+    .text-center
+      material-button.material-button-raised.material-theme-light(
+        ng-disabled="ifValidPay() == false" ng-click="clickNeedChange()") 确认金额
+      material-button.material-button-raised.material-theme-light(
+        ng-disabled="ifValidPay() == true" ng-click="clickNoNeed()") 我有零钱

@@ -1,0 +1,20 @@
+-var menuItemClass = "{"
+-menuItemClass += "'selected':menuItem.selected == true"
+-menuItemClass += "}"
+
+.rcs-menu-item
+  material-button.material-button-raised(
+    noink
+    ng-class=menuItemClass
+    ng-disabled="justClickedConfirm == true"
+    ng-click="clickMenuItem()")
+    .content(layout="vertical" layout-fill layout-align="start start")
+      span(flex="100")
+        i.fa.fa-star(ng-show="menuItem.IsRecommended == true")
+        b {{menuItem.Name}}
+        span.flavor(ng-show="menuItem.Flavor") &nbsp;(正常/{{getFlavorText()}})
+      .price
+        .normal
+          span {{menuItem.Price}}元
+        .premium(ng-if="menuItem.PremiumPrice != null")
+          span {{menuItem.PremiumPrice}}元 <i>(会员价)</i>

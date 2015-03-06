@@ -1,0 +1,20 @@
+.page(id="page-use" flex layout="vertical" layout-fill)
+  material-toolbar.material-theme-dark
+    .material-toolbar-tools(layout="horizontal")
+      material-button.return(ng-show="ifShowReturn() == true" ng-click="clickReturn()")
+        i.fa.fa-reply
+      h1
+        i.fa.fa-cutlery
+        span(ng-show="table != null") <b>{{table.TableName}}</b> ({{table.TableType}})
+      div(flex)
+      material-button.hover(ng-show="ifShowCall() == ture" ng-click="clickCall()")
+        i.fa.fa-home
+        b 呼叫服务
+      material-button.hover(ng-show="ifShowOrdered() == true" ng-click="clickOrdered()")
+        b.colored [{{getOrdered().length}}]
+        b 已点菜品
+      b.eating(ng-show="ifShowEating() == ture") 用餐愉快
+      b(ng-show="ifShowEating() == ture") {{time | date:'HH:mm'}}
+  material-content.background(layout="vertical" layout-fill scroll-y)
+    //- nested ui-view is not working well in jade
+    <div ui-view layout="vertical" layout-fill></div>

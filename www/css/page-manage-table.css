@@ -1,0 +1,43 @@
+#table h2.title {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+#table .rcs-pane.list {
+  width: 40%;
+}
+
+#table .rcs-pane.info {
+  width: 35%;
+  margin-left: 20px;
+}
+
+#table .rcs-pane.list material-item:hover .material-tile-content,
+#table .rcs-pane.list .material-tile-content.selected {
+  color: #8a1717;
+}
+
+#table .rcs-pane.list material-item:hover .material-tile-content > h2,
+#table .rcs-pane.list .material-tile-content.selected > h2 {
+  font-weight: bold;
+  color: inherit;
+}
+
+#table .rcs-pane.list material-content material-radio-group {
+  overflow: hidden;
+}
+
+#table .rcs-pane.info .material-tile-left {
+  text-align: left;
+  min-width: 90px;
+  width: 90px;
+  margin-right: 5px;
+}
+
+#table h2.error {
+  color: #8A1717;
+}
+
+#table material-item.devider {
+  border-bottom: 1px solid #8A1717;
+}

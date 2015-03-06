@@ -1,0 +1,80 @@
+/*.rcs-menu-item*/
+.rcs-menu-item material-button.material-button-raised {
+  background-color: #f8f4ee;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+
+.rcs-menu-item .content {
+  font-size: 22px;
+  line-height: 40px;
+  margin-left: 15px;
+}
+
+.rcs-menu-item .content span.flavor {
+  font-size: 0.75em;
+  font-weight: normal;
+}
+
+.rcs-menu-item .selected .content {
+  margin-left: 7px;
+}
+
+.rcs-menu-item .price {
+  /*background-color: blue;*/
+  width: 100%;
+  text-align: left;
+}
+
+.rcs-menu-item .price span {
+  text-align: left;
+  font-size: 0.95em;
+}
+
+.rcs-menu-item .price .normal {
+  float: left;
+}
+
+.rcs-menu-item .price .premium {
+  float: right;
+  margin-right: 20px;
+  color: #8A1717;
+}
+
+.rcs-menu-item .selected .price .premium {
+  margin-right: 12px;
+}
+
+.rcs-menu-item .price .premium i{
+  font-size: 0.8em;
+}
+
+.rcs-menu-item .selected {
+  border-left: 8px solid #8A1717;
+}
+
+.rcs-menu-item .selected b,
+.rcs-menu-item .selected .fa {
+  color: #8A1717;
+}
+
+/*.rcs-number-input*/
+.rcs-number-input .numberRow {
+  margin-bottom: 12px;
+}
+
+.rcs-number-input .material-button-fab {
+  margin-right: 15px;
+  background-color: #f8f4ee;
+  font-size: 22px;
+}
+
+.rcs-number-input .material-button-fab.action {
+  color: #8A1717;
+}

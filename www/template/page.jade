@@ -1,0 +1,26 @@
+div(layout="vertical" layout-fill)
+    //- nested ui-view is not working well in jade
+    <div ui-view layout="vertical" layout-fill></div>
+
+//- ion-side-menus(id="page")
+
+//-   ion-side-menu-content
+//-     ion-header-bar.bar-dark
+//-       h1.title v1.0
+//-     ion-content.background
+//-       //- nested ui-view is not working well in jade
+//-       <div ui-view layout="vertical" layout-fill></div>
+
+//-   ion-side-menu(side="left")
+//-     ion-header-bar.bar-light
+//-       h1.title <b>餐厅管理系统</b>
+//-     ion-content
+//-       a(ui-sref="page.about" ui-sref-active="active")
+//-         material-button.nav-entry
+//-           i.fa.fa-2x.fa-info-circle
+//-           | &nbsp;关于
+//-       br
+//-       a(ui-sref="page.signin" ui-sref-active="active")
+//-         material-button.nav-entry
+//-           i.fa.fa-2x.fa-sign-in
+//-           | &nbsp;登录
