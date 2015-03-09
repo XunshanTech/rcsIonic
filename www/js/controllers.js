@@ -713,7 +713,7 @@ function menuCtrl ($rootScope, $scope, $state, $window, $timeout, $materialDialo
       menuItem.selected = false;
 
       for (var j = $scope.ordering.length - 1; j >= 0; j--) {
-        if (menuItem.id == parseInt($scope.ordering[j].split('.')[0])) {
+        if (menuItem.id == $scope.ordering[j].split('.')[0]) {
           menuItem.selected = true;
           break;
         }

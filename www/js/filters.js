@@ -17,8 +17,8 @@ function makeOrderGroup () {
 
     for (var i = orderItems.length - 1; i >= 0; i--) {
       var itemId = orderItems[i].toString(); // in format list 28.4, 17.10, 36
-      var menuItemId = parseInt(itemId.split('.')[0]); // --> 28, 17, 36
-      var flavorId = parseInt(itemId.split('.')[1]) // --> 4, 10, NaN
+      var menuItemId = itemId.split('.')[0]; // --> 28, 17, 36
+      var flavorId = itemId.split('.')[1]; // --> 4, 10, NaN
 
       for (var j = menuItems.length - 1; j >= 0; j--) {
         if (menuItems[j].id == menuItemId) {

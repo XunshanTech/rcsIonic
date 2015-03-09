@@ -383,8 +383,8 @@ function rcsSession ($rootScope, $interval, rcsLocalstorage, rcsHttp, RCS_EVENT,
 }
 
 function rcsHttp ($http, $log, $state) {
-  var baseUrl = 'http://rcsserver.cloudapp.net:1337/';
-  // var baseUrl = 'http://localhost:1337/';
+  //var baseUrl = 'http://rcsserver.cloudapp.net:1337/';
+  var baseUrl = 'http://192.168.1.103:1337/';
   var httpService = {};
 
   var errorAction = function (data, status) {
@@ -438,7 +438,6 @@ function rcsHttp ($http, $log, $state) {
 
   httpService.Table = {
     list: function (restaurantId) {
-      restaurantId = parseInt(restaurantId);
       return $http
         .post(baseUrl + 'Table/list', {
           RestaurantId: restaurantId
@@ -446,8 +445,6 @@ function rcsHttp ($http, $log, $state) {
         .error(errorAction);
     },
     link: function (restaurantId, tableId, deviceId) {
-      restaurantId = parseInt(restaurantId);
-      tableId = parseInt(tableId);
       return $http
         .post(baseUrl + 'Table/link/' + tableId, {
           RestaurantId: restaurantId,
@@ -456,8 +453,6 @@ function rcsHttp ($http, $log, $state) {
         .error(errorAction);
     },
     validateToken: function (restaurantId, tableId, token) {
-      restaurantId = parseInt(restaurantId);
-      tableId = parseInt(tableId);
       return $http
         .post(baseUrl + 'Table/validateToken', {
           RestaurantId: restaurantId,
