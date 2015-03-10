@@ -13,11 +13,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "xml": "<feature name=\"Brightness\"><param name=\"android-package\" value=\"org.apache.cordova.plugin.Brightness.BrightnessPlugin\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Brightness\"><param name=\"android-package\" value=\"org.apache.cordova.plugin.Brightness.BrightnessPlugin\" /></feature>",
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -39,13 +39,13 @@
         "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.ionicframework.rcsionic593433"
         },
+        "cordova.plugin.Brightness": {
+            "PACKAGE_NAME": "com.ionicframework.rcsionic593433"
+        },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.ionicframework.rcsionic593433"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.ionicframework.rcsionic593433"
-        },
-        "cordova.plugin.Brightness": {
             "PACKAGE_NAME": "com.ionicframework.rcsionic593433"
         }
     },
