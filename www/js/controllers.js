@@ -1,7 +1,7 @@
 angular
   .module('rcs')
   .controller('appCtrl', ['$scope', 'rcsBrightness', appCtrl])
-  .controller('pageCtrl', ['$scope', '$state', '$materialDialog', pageCtrl])
+  .controller('pageCtrl', ['$scope', '$state', '$materialDialog', 'rcsCommon', pageCtrl])
   .controller('pageManageCtrl', ['$scope', '$state', 'rcsSession', pageManageCtrl])
   .controller('pageUseCtrl', ['$scope', '$state', '$interval', 'rcsSession', pageUseCtrl])
   .controller('signInCtrl', ['$scope', '$state', '$timeout', 'rcsSession', 'RCS_REQUEST_ERR', signInCtrl])
@@ -29,7 +29,7 @@ function appCtrl ($scope, rcsBrightness) {
   }
 }
 
-function pageCtrl ($scope, $state, $materialDialog) {
+function pageCtrl ($scope, $state, $materialDialog, rcsCommon) {
   // scope methods
   $scope.clickReturn = clickReturn;
   $scope.ifShowReturn = ifShowReturn;
@@ -70,6 +70,10 @@ function pageCtrl ($scope, $state, $materialDialog) {
       controller: ['$scope', '$hideDialog', function($scope, $hideDialog) {
         $scope.textId = textId;
         $scope.clickDismiss = clickDismiss;
+
+        if(textId != 0) {
+          rcsCommon.changeDialogLeftTime($scope, 3, $hideDialog);
+        }
 
         function clickDismiss () {
           dissmissAction();

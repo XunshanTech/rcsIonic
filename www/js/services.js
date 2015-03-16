@@ -2,6 +2,7 @@ angular
   .module('rcs')
   .factory('rcsBrightness', ['$timeout', rcsBrightness])
   .factory('rcsLocalstorage', ['$window', rcsLocalstorage])
+  .factory('rcsCommon', [rcsCommon])
   .factory('rcsHttp', ['$http', '$log', '$state', rcsHttp])
   .factory('rcsSession', ['$rootScope', '$interval', 'rcsLocalstorage', 'rcsHttp', 'RCS_EVENT', 'STORAGE_KEY', rcsSession]);
 
@@ -577,4 +578,23 @@ function rcsBrightness ($timeout) {
       });
     }
   }
+}
+
+function rcsCommon() {
+  var commonService = {
+    changeDialogLeftTime: changeDialogLeftTime
+  };
+  function changeDialogLeftTime($scope, leftTime, $hideDialog) {
+    $scope.leftTime = leftTime;
+    var leftTimeInterval = window.setInterval(function() {
+      $scope.$apply(function() {
+        $scope.leftTime = $scope.leftTime - 1;
+      })
+      if($scope.leftTime === 0) {
+        window.clearInterval(leftTimeInterval);
+        $hideDialog();
+      }
+    }, 1000);
+  }
+  return commonService;
 }
