@@ -248,6 +248,7 @@ function restaurantCtrl ($scope, $state, rcsHttp, rcsSession) {
   if (!rcsSession.getSignedInUser()) {
     return $state.go('page.manage.signin');
   }
+  $scope.Role = rcsSession.getSignedInUser().Role;
 
   rcsSession.unselectRestaurant(initializeRestaurants);
 
@@ -256,6 +257,9 @@ function restaurantCtrl ($scope, $state, rcsHttp, rcsSession) {
     return rcsHttp.Restaurant.list()
       .success(function (res) {
         $scope.restaurants = res.Restaurants;
+        if($scope.Role !== 'manager' && $scope.restaurants.length > 0) {
+          clickGoTo();
+        }
       });
   }
 
