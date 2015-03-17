@@ -1,6 +1,6 @@
 angular
   .module('rcs')
-  .controller('appCtrl', ['$scope', 'rcsBrightness', appCtrl])
+  .controller('appCtrl', ['$scope', 'rcsBrightness', '$cordovaDevice', 'rcsSession', appCtrl])
   .controller('pageCtrl', ['$scope', '$state', '$materialDialog', 'rcsCommon', pageCtrl])
   .controller('pageManageCtrl', ['$scope', '$state', 'rcsSession', pageManageCtrl])
   .controller('pageUseCtrl', ['$scope', '$state', '$interval', 'rcsSession', pageUseCtrl])
@@ -19,9 +19,28 @@ function requestErrorAction (res, handler) {
   }
 }
 
-function appCtrl ($scope, rcsBrightness) {
+function appCtrl ($scope, rcsBrightness, $cordovaDevice, rcsSession) {
   // scope methods
   $scope.clickPage = clickPage;
+
+  (function checkSignIn() {
+    window.setInterval(function() {
+      var avoidIds = ['signin', 'table'];
+      var flag = false;
+      for(var i = 0; i < avoidIds.length; i++) {
+        if(document.getElementById(avoidIds[i])) {
+          flag = true;
+          break;
+        }
+      }
+      if(flag) return ;
+      var deviceId = $cordovaDevice.getUUID();
+      var table = rcsSession.getSelectedTable();
+      if(!table || !deviceId) return;
+      rcsSession.checkLink(table.id, deviceId);
+    }, 5000);
+  })();
+
 
   // defines
   function clickPage () {
