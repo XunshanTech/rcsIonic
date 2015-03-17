@@ -794,7 +794,7 @@ function eatingCtrl ($scope, $state, $interval, rcsSession, makeOrderGroupFilter
 
       }, requestErrorAction);
 
-    }, 1000*5);
+    }, 1000 * 2);
   }
 
   // defines
