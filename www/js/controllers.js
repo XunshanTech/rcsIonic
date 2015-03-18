@@ -1,7 +1,7 @@
 angular
   .module('rcs')
-  .controller('appCtrl', ['$scope', 'rcsBrightness', appCtrl])
-  .controller('pageCtrl', ['$scope', '$state', '$materialDialog', pageCtrl])
+  .controller('appCtrl', ['$scope', 'rcsBrightness', '$cordovaDevice', 'rcsSession', appCtrl])
+  .controller('pageCtrl', ['$scope', '$state', '$materialDialog', 'rcsCommon', pageCtrl])
   .controller('pageManageCtrl', ['$scope', '$state', 'rcsSession', pageManageCtrl])
   .controller('pageUseCtrl', ['$scope', '$state', '$interval', 'rcsSession', pageUseCtrl])
   .controller('signInCtrl', ['$scope', '$state', '$timeout', 'rcsSession', 'RCS_REQUEST_ERR', signInCtrl])
@@ -19,9 +19,28 @@ function requestErrorAction (res, handler) {
   }
 }
 
-function appCtrl ($scope, rcsBrightness) {
+function appCtrl ($scope, rcsBrightness, $cordovaDevice, rcsSession) {
   // scope methods
   $scope.clickPage = clickPage;
+
+  (function checkSignIn() {
+    window.setInterval(function() {
+      var avoidIds = ['signin', 'table'];
+      var flag = false;
+      for(var i = 0; i < avoidIds.length; i++) {
+        if(document.getElementById(avoidIds[i])) {
+          flag = true;
+          break;
+        }
+      }
+      if(flag) return ;
+      var deviceId = $cordovaDevice.getUUID();
+      var table = rcsSession.getSelectedTable();
+      if(!table || !deviceId) return;
+      rcsSession.checkLink(table.id, deviceId);
+    }, 5000);
+  })();
+
 
   // defines
   function clickPage () {
@@ -29,7 +48,7 @@ function appCtrl ($scope, rcsBrightness) {
   }
 }
 
-function pageCtrl ($scope, $state, $materialDialog) {
+function pageCtrl ($scope, $state, $materialDialog, rcsCommon) {
   // scope methods
   $scope.clickReturn = clickReturn;
   $scope.ifShowReturn = ifShowReturn;
@@ -70,6 +89,10 @@ function pageCtrl ($scope, $state, $materialDialog) {
       controller: ['$scope', '$hideDialog', function($scope, $hideDialog) {
         $scope.textId = textId;
         $scope.clickDismiss = clickDismiss;
+
+        if(textId != 0) {
+          rcsCommon.changeDialogLeftTime($scope, 3, $hideDialog);
+        }
 
         function clickDismiss () {
           dissmissAction();
@@ -248,6 +271,7 @@ function restaurantCtrl ($scope, $state, rcsHttp, rcsSession) {
   if (!rcsSession.getSignedInUser()) {
     return $state.go('page.manage.signin');
   }
+  $scope.Role = rcsSession.getSignedInUser().Role;
 
   rcsSession.unselectRestaurant(initializeRestaurants);
 
@@ -256,6 +280,9 @@ function restaurantCtrl ($scope, $state, rcsHttp, rcsSession) {
     return rcsHttp.Restaurant.list()
       .success(function (res) {
         $scope.restaurants = res.Restaurants;
+        if($scope.Role !== 'manager' && $scope.restaurants.length > 0) {
+          clickGoTo();
+        }
       });
   }
 
@@ -786,7 +813,7 @@ function eatingCtrl ($scope, $state, $interval, rcsSession, makeOrderGroupFilter
 
       }, requestErrorAction);
 
-    }, 1000*5);
+    }, 1000 * 2);
   }
 
   // defines

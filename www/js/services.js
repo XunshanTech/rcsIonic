@@ -2,10 +2,11 @@ angular
   .module('rcs')
   .factory('rcsBrightness', ['$timeout', rcsBrightness])
   .factory('rcsLocalstorage', ['$window', rcsLocalstorage])
+  .factory('rcsCommon', [rcsCommon])
   .factory('rcsHttp', ['$http', '$log', '$state', rcsHttp])
-  .factory('rcsSession', ['$rootScope', '$interval', 'rcsLocalstorage', 'rcsHttp', 'RCS_EVENT', 'STORAGE_KEY', rcsSession]);
+  .factory('rcsSession', ['$rootScope', '$interval', 'rcsLocalstorage', 'rcsHttp', 'RCS_EVENT', 'STORAGE_KEY', '$state', rcsSession]);
 
-function rcsSession ($rootScope, $interval, rcsLocalstorage, rcsHttp, RCS_EVENT, STORAGE_KEY) {
+function rcsSession ($rootScope, $interval, rcsLocalstorage, rcsHttp, RCS_EVENT, STORAGE_KEY, $state) {
   var sessionService = {
     handshake: handshake,
     downloadMenu: downloadMenu,
@@ -26,6 +27,7 @@ function rcsSession ($rootScope, $interval, rcsLocalstorage, rcsHttp, RCS_EVENT,
     selectRestaurant: selectRestaurant,
     unselectRestaurant: unselectRestaurant,
     linkTable: linkTable,
+    checkLink: checkLink,
 
     increaseMenuItemSelection: increaseMenuItemSelection,
     decreaseMenuItemSelection: decreaseMenuItemSelection,
@@ -134,6 +136,13 @@ function rcsSession ($rootScope, $interval, rcsLocalstorage, rcsHttp, RCS_EVENT,
         successAction();
       })
       .error(errorAction);
+  }
+
+  function checkLink(tableId, deviceId) {
+    rcsHttp.Table.checkLink(tableId, deviceId)
+      .success(function(res) {
+        if(!res.link) return $state.go('page.manage.signin');
+      });
   }
 
   function linkTable (tableId, deviceId, successAction, errorAction) {
@@ -384,7 +393,6 @@ function rcsSession ($rootScope, $interval, rcsLocalstorage, rcsHttp, RCS_EVENT,
 
 function rcsHttp ($http, $log, $state) {
   //var baseUrl = 'http://rcsserver.cloudapp.net:1337/';
-  //var baseUrl = 'http://192.168.1.103:1337/';
   var baseUrl = 'http://robaiter.com.cn/';
   var httpService = {};
 
@@ -449,6 +457,13 @@ function rcsHttp ($http, $log, $state) {
       return $http
         .post(baseUrl + 'Table/link/' + tableId, {
           RestaurantId: restaurantId,
+          LinkedTabletId: deviceId
+        })
+        .error(errorAction);
+    },
+    checkLink: function(tableId, deviceId) {
+      return $http
+        .post(baseUrl + 'Table/checkLink/' + tableId, {
           LinkedTabletId: deviceId
         })
         .error(errorAction);
@@ -577,4 +592,23 @@ function rcsBrightness ($timeout) {
       });
     }
   }
+}
+
+function rcsCommon() {
+  var commonService = {
+    changeDialogLeftTime: changeDialogLeftTime
+  };
+  function changeDialogLeftTime($scope, leftTime, $hideDialog) {
+    $scope.leftTime = leftTime;
+    var leftTimeInterval = window.setInterval(function() {
+      $scope.$apply(function() {
+        $scope.leftTime = $scope.leftTime - 1;
+      })
+      if($scope.leftTime === 0) {
+        window.clearInterval(leftTimeInterval);
+        $hideDialog();
+      }
+    }, 1000);
+  }
+  return commonService;
 }

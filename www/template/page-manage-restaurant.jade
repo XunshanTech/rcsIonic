@@ -1,4 +1,4 @@
-div(id="restaurant" layout="vertical" layout-fill)
+div(id="restaurant", layout="vertical", layout-fill, ng-show='Role=="manager"')
   h2.text-center.title 选择餐厅
 
   .text-center(ng-show="restaurants == null")
