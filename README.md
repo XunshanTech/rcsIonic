@@ -16,3 +16,6 @@
 The app can be run in browser for easy debug experience:
 1. ionic serve
 2. Browse to `http://localhost:8100` to view the app
+
+## Download the latest apk file
+![rcsIonic](http://robaiter.com.cn/qr.png)
