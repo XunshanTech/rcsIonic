@@ -393,8 +393,8 @@ function rcsSession ($rootScope, $interval, rcsLocalstorage, rcsHttp, RCS_EVENT,
 
 function rcsHttp ($http, $log, $state) {
   //var baseUrl = 'http://rcsserver.cloudapp.net:1337/';
-  var baseUrl = 'http://192.168.1.101:1337/';
-  //var baseUrl = 'http://192.168.31.231:1337/';
+  //var baseUrl = 'http://192.168.1.101:1337/';
+  var baseUrl = 'http://192.168.31.231:1337/';
   var httpService = {};
 
   var errorAction = function (data, status) {
@@ -599,7 +599,7 @@ function rcsCommon() {
   var commonService = {
     changeDialogLeftTime: changeDialogLeftTime
   };
-  function changeDialogLeftTime($scope, leftTime, $hideDialog) {
+  function changeDialogLeftTime($scope, leftTime, cb) {
     $scope.leftTime = leftTime;
     var leftTimeInterval = window.setInterval(function() {
       $scope.$apply(function() {
@@ -607,7 +607,7 @@ function rcsCommon() {
       })
       if($scope.leftTime === 0) {
         window.clearInterval(leftTimeInterval);
-        $hideDialog();
+        cb();
       }
     }, 1000);
   }

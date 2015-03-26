@@ -3,6 +3,6 @@ material-dialog.width-md(id="dialog-linkSuccess")
     h3 操作成功!
     h4 已关联到餐桌: <b>{{table.TableName}}</b>
 
-  .dialog-actions
-    material-button.material-button-raised.material-theme-light(flex="100"
-      ng-click="clickSignout()") 退出登录并开始使用
+  .dialog-actions(layout="horizontal" layout-align="space-around")
+    material-button.material-button-raised.material-theme-light(flex="100",
+      ng-click="clickSignout()") {{leftTime}}秒后，退出登录并开始使用。

@@ -6,7 +6,7 @@ angular
   .controller('pageUseCtrl', ['$scope', '$state', '$interval', 'rcsSession', pageUseCtrl])
   .controller('signInCtrl', ['$scope', '$state', '$timeout', 'rcsSession', 'RCS_REQUEST_ERR', signInCtrl])
   .controller('restaurantCtrl', ['$scope', '$state', 'rcsHttp', 'rcsSession', restaurantCtrl])
-  .controller('tableCtrl', ['$scope', '$state', '$cordovaDevice', '$materialDialog', 'rcsHttp', 'rcsSession', tableCtrl])
+  .controller('tableCtrl', ['$scope', '$state', '$cordovaDevice', '$materialDialog', 'rcsHttp', 'rcsSession', 'rcsCommon', tableCtrl])
   .controller('aboutCtrl', ['$scope', '$state', '$interval', 'rcsSession', 'TABLE_STATUS', aboutCtrl])
   .controller('menuCtrl', ['$rootScope', '$scope', '$state', '$window', '$timeout', '$materialDialog', 'rcsSession', 'makeOrderGroupFilter', 'makeArrayTextFilter', 'RCS_EVENT', 'RCS_REQUEST_ERR', menuCtrl])
   .controller('eatingCtrl', ['$scope', '$state', '$interval', 'rcsSession', 'makeOrderGroupFilter', 'RCS_REQUEST_ERR', eatingCtrl])
@@ -91,7 +91,7 @@ function pageCtrl ($scope, $state, $materialDialog, rcsCommon) {
         $scope.clickDismiss = clickDismiss;
 
         if(textId != 0) {
-          rcsCommon.changeDialogLeftTime($scope, 3, $hideDialog);
+          rcsCommon.changeDialogLeftTime($scope, 3, clickDismiss);
         }
 
         function clickDismiss () {
@@ -304,7 +304,7 @@ function restaurantCtrl ($scope, $state, rcsHttp, rcsSession) {
   }
 }
 
-function tableCtrl ($scope, $state, $cordovaDevice, $materialDialog, rcsHttp, rcsSession) {
+function tableCtrl ($scope, $state, $cordovaDevice, $materialDialog, rcsHttp, rcsSession, rcsCommon) {
   // scope fields
   $scope.refreshing = false;
   $scope.linking = false;
@@ -371,6 +371,8 @@ function tableCtrl ($scope, $state, $cordovaDevice, $materialDialog, rcsHttp, rc
           controller: ['$scope', '$hideDialog', function($scope, $hideDialog) {
             $scope.table = table;
             $scope.clickSignout = clickSignout;
+
+            rcsCommon.changeDialogLeftTime($scope, 3, clickSignout);
 
             function clickSignout () {
               rcsSession.signOut(function () {
