@@ -6,7 +6,7 @@ div(id="signin" layout="vertical" layout-fill)
     h2 已登录 <b>{{getSignedInUser().Name}}</b>
 
   .pane-area.text-unselectable(layout="horizontal" layout-align="center" layout-padding)
-    .rcs-pane.sign.material-whiteframe-z3(ng-if="ifSignedIn() == false" layout="vertical" layout-align="center")
+    form.rcs-pane.sign.material-whiteframe-z3(ng-if="ifSignedIn() == false", ng-submit="clickSignIn($event)", layout="vertical", layout-align="center")
       material-input-group.material-input-group-theme-light
         label(for="0") 用户邮箱
         material-input(id="0" type="text" ng-model="signIn.email" ng-required="true")
